@@ -75,7 +75,7 @@ export function MenuLink({
   label,
   hint,
 }: {
-  to: LinkProps["to"];
+  to: NonNullable<LinkProps["to"]>;
   icon: ReactNode;
   label: string;
   hint?: string;

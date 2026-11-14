@@ -10,11 +10,37 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AirtimeRouteImport } from './routes/airtime'
+import { Route as BillsRouteImport } from './routes/bills'
+import { Route as CardsRouteImport } from './routes/cards'
 import { Route as ForgotPinRouteImport } from './routes/forgot-pin'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as MoreRouteImport } from './routes/more'
+import { Route as MpesaRouteImport } from './routes/mpesa'
+import { Route as SendRouteImport } from './routes/send'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StatementsRouteImport } from './routes/statements'
+import { Route as TransactRouteImport } from './routes/transact'
+import { Route as ReceiptIdRouteImport } from './routes/receipt.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AirtimeRoute = AirtimeRouteImport.update({
+  id: '/airtime',
+  path: '/airtime',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillsRoute = BillsRouteImport.update({
+  id: '/bills',
+  path: '/bills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CardsRoute = CardsRouteImport.update({
+  id: '/cards',
+  path: '/cards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPinRoute = ForgotPinRouteImport.update({
@@ -22,31 +48,155 @@ const ForgotPinRoute = ForgotPinRouteImport.update({
   path: '/forgot-pin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreRoute = MoreRouteImport.update({
+  id: '/more',
+  path: '/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MpesaRoute = MpesaRouteImport.update({
+  id: '/mpesa',
+  path: '/mpesa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SendRoute = SendRouteImport.update({
+  id: '/send',
+  path: '/send',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatementsRoute = StatementsRouteImport.update({
+  id: '/statements',
+  path: '/statements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransactRoute = TransactRouteImport.update({
+  id: '/transact',
+  path: '/transact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceiptIdRoute = ReceiptIdRouteImport.update({
+  id: '/receipt/$id',
+  path: '/receipt/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/airtime': typeof AirtimeRoute
+  '/bills': typeof BillsRoute
+  '/cards': typeof CardsRoute
   '/forgot-pin': typeof ForgotPinRoute
+  '/home': typeof HomeRoute
+  '/more': typeof MoreRoute
+  '/mpesa': typeof MpesaRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/statements': typeof StatementsRoute
+  '/transact': typeof TransactRoute
+  '/receipt/$id': typeof ReceiptIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/airtime': typeof AirtimeRoute
+  '/bills': typeof BillsRoute
+  '/cards': typeof CardsRoute
   '/forgot-pin': typeof ForgotPinRoute
+  '/home': typeof HomeRoute
+  '/more': typeof MoreRoute
+  '/mpesa': typeof MpesaRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/statements': typeof StatementsRoute
+  '/transact': typeof TransactRoute
+  '/receipt/$id': typeof ReceiptIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/airtime': typeof AirtimeRoute
+  '/bills': typeof BillsRoute
+  '/cards': typeof CardsRoute
   '/forgot-pin': typeof ForgotPinRoute
+  '/home': typeof HomeRoute
+  '/more': typeof MoreRoute
+  '/mpesa': typeof MpesaRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/statements': typeof StatementsRoute
+  '/transact': typeof TransactRoute
+  '/receipt/$id': typeof ReceiptIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forgot-pin'
+  fullPaths:
+    | '/'
+    | '/airtime'
+    | '/bills'
+    | '/cards'
+    | '/forgot-pin'
+    | '/home'
+    | '/more'
+    | '/mpesa'
+    | '/send'
+    | '/settings'
+    | '/statements'
+    | '/transact'
+    | '/receipt/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forgot-pin'
-  id: '__root__' | '/' | '/forgot-pin'
+  to:
+    | '/'
+    | '/airtime'
+    | '/bills'
+    | '/cards'
+    | '/forgot-pin'
+    | '/home'
+    | '/more'
+    | '/mpesa'
+    | '/send'
+    | '/settings'
+    | '/statements'
+    | '/transact'
+    | '/receipt/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/airtime'
+    | '/bills'
+    | '/cards'
+    | '/forgot-pin'
+    | '/home'
+    | '/more'
+    | '/mpesa'
+    | '/send'
+    | '/settings'
+    | '/statements'
+    | '/transact'
+    | '/receipt/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AirtimeRoute: typeof AirtimeRoute
+  BillsRoute: typeof BillsRoute
+  CardsRoute: typeof CardsRoute
   ForgotPinRoute: typeof ForgotPinRoute
+  HomeRoute: typeof HomeRoute
+  MoreRoute: typeof MoreRoute
+  MpesaRoute: typeof MpesaRoute
+  SendRoute: typeof SendRoute
+  SettingsRoute: typeof SettingsRoute
+  StatementsRoute: typeof StatementsRoute
+  TransactRoute: typeof TransactRoute
+  ReceiptIdRoute: typeof ReceiptIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +208,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/airtime': {
+      id: '/airtime'
+      path: '/airtime'
+      fullPath: '/airtime'
+      preLoaderRoute: typeof AirtimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bills': {
+      id: '/bills'
+      path: '/bills'
+      fullPath: '/bills'
+      preLoaderRoute: typeof BillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cards': {
+      id: '/cards'
+      path: '/cards'
+      fullPath: '/cards'
+      preLoaderRoute: typeof CardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forgot-pin': {
       id: '/forgot-pin'
       path: '/forgot-pin'
@@ -65,12 +236,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPinRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more': {
+      id: '/more'
+      path: '/more'
+      fullPath: '/more'
+      preLoaderRoute: typeof MoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mpesa': {
+      id: '/mpesa'
+      path: '/mpesa'
+      fullPath: '/mpesa'
+      preLoaderRoute: typeof MpesaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/send': {
+      id: '/send'
+      path: '/send'
+      fullPath: '/send'
+      preLoaderRoute: typeof SendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statements': {
+      id: '/statements'
+      path: '/statements'
+      fullPath: '/statements'
+      preLoaderRoute: typeof StatementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transact': {
+      id: '/transact'
+      path: '/transact'
+      fullPath: '/transact'
+      preLoaderRoute: typeof TransactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receipt/$id': {
+      id: '/receipt/$id'
+      path: '/receipt/$id'
+      fullPath: '/receipt/$id'
+      preLoaderRoute: typeof ReceiptIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AirtimeRoute: AirtimeRoute,
+  BillsRoute: BillsRoute,
+  CardsRoute: CardsRoute,
   ForgotPinRoute: ForgotPinRoute,
+  HomeRoute: HomeRoute,
+  MoreRoute: MoreRoute,
+  MpesaRoute: MpesaRoute,
+  SendRoute: SendRoute,
+  SettingsRoute: SettingsRoute,
+  StatementsRoute: StatementsRoute,
+  TransactRoute: TransactRoute,
+  ReceiptIdRoute: ReceiptIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

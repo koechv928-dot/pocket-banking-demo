@@ -47,7 +47,7 @@ function isoDaysAgo(now: Date, days: number, time: string) {
   const d = new Date(now);
   d.setDate(d.getDate() - days);
   const [h, m] = time.split(":").map(Number);
-  d.setHours(h, m, 0, 0);
+  d.setHours(h ?? 0, m ?? 0, 0, 0);
   return d.toISOString();
 }
 

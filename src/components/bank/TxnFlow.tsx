@@ -42,6 +42,7 @@ export function TxnFlow({ draft, onBack }: { draft: TxnDraft; onBack: () => void
       }, latest.current.draft.processingMs ?? 1400);
       return () => window.clearTimeout(id);
     }
+    return undefined;
   }, [step]);
 
   const header = (

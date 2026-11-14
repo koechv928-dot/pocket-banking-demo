@@ -39,11 +39,11 @@ export interface Txn {
   fee: number;
   description: string;
   category: TxnCategory;
-  counterparty?: string;
-  counterpartyNumber?: string;
-  merchantId?: string;
-  merchantType?: MerchantType;
-  details?: DetailLine[];
+  counterparty?: string | undefined;
+  counterpartyNumber?: string | undefined;
+  merchantId?: string | undefined;
+  merchantType?: MerchantType | undefined;
+  details?: DetailLine[] | undefined;
   /** ISO date-time */
   date: string;
 }
@@ -54,7 +54,7 @@ export interface Beneficiary {
   id: string;
   name: string;
   kind: BeneficiaryKind;
-  bank?: string;
+  bank?: string | undefined;
   number: string;
 }
 
@@ -141,18 +141,18 @@ export interface TxnDraft {
   fee: number;
   category: TxnCategory;
   description: string;
-  counterparty?: string;
-  counterpartyNumber?: string;
-  merchantId?: string;
-  merchantType?: MerchantType;
+  counterparty?: string | undefined;
+  counterpartyNumber?: string | undefined;
+  merchantId?: string | undefined;
+  merchantType?: MerchantType | undefined;
   /** Headline like "Pay to: CANDY SHOP, Till 123456" */
-  payTo?: string;
+  payTo?: string | undefined;
   details: DetailLine[];
-  toAccountId?: string;
-  newMerchant?: Omit<Merchant, "id">;
-  saveBeneficiary?: Omit<Beneficiary, "id">;
-  saveBiller?: Omit<Biller, "id">;
-  processingMs?: number;
-  processingText?: string;
-  stkPhone?: string;
+  toAccountId?: string | undefined;
+  newMerchant?: Omit<Merchant, "id"> | undefined;
+  saveBeneficiary?: Omit<Beneficiary, "id"> | undefined;
+  saveBiller?: Omit<Biller, "id"> | undefined;
+  processingMs?: number | undefined;
+  processingText?: string | undefined;
+  stkPhone?: string | undefined;
 }

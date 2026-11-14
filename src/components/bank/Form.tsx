@@ -15,7 +15,7 @@ export function Field({
   htmlFor,
 }: {
   label: string;
-  error?: string | null;
+  error?: string | null | undefined;
   hint?: ReactNode;
   children: ReactNode;
   htmlFor?: string;

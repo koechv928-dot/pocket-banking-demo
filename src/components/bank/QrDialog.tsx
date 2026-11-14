@@ -15,7 +15,8 @@ function pattern(seed: string, n = 25) {
     cells.push(((h >>> 7) & 1) === 1);
   }
   const finder = (x: number, y: number) => {
-    for (const [fx, fy] of [[0, 0], [n - 7, 0], [0, n - 7]]) {
+    const finders: [number, number][] = [[0, 0], [n - 7, 0], [0, n - 7]];
+    for (const [fx, fy] of finders) {
       const dx = x - fx, dy = y - fy;
       if (dx >= 0 && dx < 7 && dy >= 0 && dy < 7) {
         const edge = dx === 0 || dx === 6 || dy === 0 || dy === 6;
@@ -31,7 +32,7 @@ function pattern(seed: string, n = 25) {
 
 export function QrDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
   const { state } = useBank();
-  const acc = state.accounts[0];
+  const acc = state.accounts[0]!;
   const qr = useMemo(() => pattern(acc.number), [acc.number]);
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
