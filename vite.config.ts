@@ -8,6 +8,7 @@
 // hosting already compresses at the edge.
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   tanstackStart: {
@@ -15,4 +16,41 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  plugins: [
+    VitePWA({
+      // The manifest is a static file in public/; registration lives only in src/lib/pwa.ts.
+      manifest: false,
+      injectRegister: null,
+      registerType: "autoUpdate",
+      strategies: "generateSW",
+      filename: "sw.js",
+      // Client assets are emitted here by the TanStack/nitro build.
+      outDir: "dist/client",
+      devOptions: { enabled: false },
+      workbox: {
+        globPatterns: ["**/*.{js,css,png,jpg,svg,webmanifest,woff2}"],
+        navigateFallback: null,
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+        runtimeCaching: [
+          {
+            urlPattern: ({ request, url }) => request.mode === "navigate" && !url.pathname.startsWith("/~oauth"),
+            handler: "NetworkFirst",
+            options: { cacheName: "kilele-pages", networkTimeoutSeconds: 4, expiration: { maxEntries: 30 } },
+          },
+          {
+            urlPattern: ({ url }) => url.origin === "https://fonts.googleapis.com" || url.origin === "https://fonts.gstatic.com",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "kilele-fonts",
+              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
+      },
+    }),
+  ],
 });

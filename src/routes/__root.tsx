@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AppShell } from "@/components/bank/AppShell";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -80,22 +82,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Kilele Bank - Demo mobile banking" },
+      { name: "description", content: "Kilele Bank demo mobile banking app: send money, M-PESA, bills, airtime, cards and statements with mock data." },
+      { name: "author", content: "Kilele Bank (demo)" },
+      { name: "theme-color", content: "#0B2347" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-title", content: "Kilele" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { property: "og:title", content: "Kilele Bank - Demo mobile banking" },
+      { property: "og:description", content: "A demo mobile banking app with working mock flows." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -124,7 +135,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
+      <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );
 }
