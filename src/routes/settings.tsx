@@ -1,6 +1,6 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { KeyRound, LogOut, RotateCcw } from "lucide-react";
+import { Database, KeyRound, LogOut, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { useBank } from "@/lib/bank/store";
 import { validateNewPin } from "@/lib/bank/logic";
@@ -80,6 +80,11 @@ function SettingsPage() {
         </Field>
 
         <SectionTitle>Demo data</SectionTitle>
+        <Button asChild variant="soft" size="xl" className="w-full justify-start">
+          <Link to="/demo-editor">
+            <Database /> {t("demoEditor")}
+          </Link>
+        </Button>
         <Button variant="outline" size="xl" className="w-full justify-start" onClick={() => setResetOpen(true)}>
           <RotateCcw /> {t("resetData")}
         </Button>

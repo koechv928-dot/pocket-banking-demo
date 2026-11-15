@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Bell, CreditCard, FileText, LogOut, Settings as SettingsIcon, User } from "lucide-react";
+import { Bell, CreditCard, Database, FileText, LogOut, Settings as SettingsIcon, User } from "lucide-react";
 import { useBank } from "@/lib/bank/store";
 import { HOLDER } from "@/lib/bank/profile";
 import { MenuLink, PageHeader } from "@/components/bank/PageHeader";
@@ -45,6 +45,7 @@ function More() {
           />
           <MenuLink to="/statements" icon={<FileText className="h-5 w-5" />} label={t("statements")} hint="Filter, view and download" />
           <MenuLink to="/cards" icon={<CreditCard className="h-5 w-5" />} label={t("myCards")} hint="Freeze card and set limits" />
+          <MenuLink to="/demo-editor" icon={<Database className="h-5 w-5" />} label={t("demoEditor")} hint="Edit balances, transactions, merchants" />
           <MenuLink to="/settings" icon={<SettingsIcon className="h-5 w-5" />} label={t("settings")} hint="PIN, language, dark mode" />
         </nav>
 
