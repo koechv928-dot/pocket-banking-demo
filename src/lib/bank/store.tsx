@@ -47,6 +47,7 @@ export interface BankContextValue {
   clearNotifications: () => void;
   setCardFrozen: (frozen: boolean) => void;
   setCardLimits: (limits: CardLimits) => void;
+  setOpeningBalance: (accountId: string, amount: number) => void;
   resetData: () => void;
 }
 
@@ -265,6 +266,11 @@ export function BankProvider({ children }: { children: ReactNode }) {
       clearNotifications: () => update((s) => ({ ...s, notifications: [] })),
       setCardFrozen: (frozen) => update((s) => ({ ...s, card: { ...s.card, frozen } })),
       setCardLimits: (limits) => update((s) => ({ ...s, card: { ...s.card, limits } })),
+      setOpeningBalance: (id, amount) =>
+        update((s) => ({
+          ...s,
+          accounts: s.accounts.map((a) => (a.id === id ? { ...a, openingBalance: amount } : a)),
+        })),
       resetData: () => {
         const prev = ref.current!;
         const seed = createSeedState();
