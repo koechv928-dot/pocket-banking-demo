@@ -55,7 +55,7 @@ export function TextField({
   label: string;
   value: string;
   onChange: (v: string) => void;
-  error?: string | null;
+  error?: string | null | undefined;
   hint?: ReactNode;
   placeholder?: string;
   inputMode?: "text" | "numeric" | "tel" | "decimal" | "email";
@@ -89,7 +89,7 @@ export function AmountField({
 }: {
   value: string;
   onChange: (v: string) => void;
-  error?: string | null;
+  error?: string | null | undefined;
   presets?: number[];
   label?: string;
   hint?: ReactNode;
