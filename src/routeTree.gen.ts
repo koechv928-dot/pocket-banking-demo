@@ -17,6 +17,8 @@ import { Route as ForgotPinRouteImport } from './routes/forgot-pin'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as MoreRouteImport } from './routes/more'
 import { Route as MpesaRouteImport } from './routes/mpesa'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SendRouteImport } from './routes/send'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StatementsRouteImport } from './routes/statements'
@@ -63,6 +65,16 @@ const MpesaRoute = MpesaRouteImport.update({
   path: '/mpesa',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SendRoute = SendRouteImport.update({
   id: '/send',
   path: '/send',
@@ -98,6 +110,8 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRoute
   '/more': typeof MoreRoute
   '/mpesa': typeof MpesaRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/send': typeof SendRoute
   '/settings': typeof SettingsRoute
   '/statements': typeof StatementsRoute
@@ -113,6 +127,8 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRoute
   '/more': typeof MoreRoute
   '/mpesa': typeof MpesaRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/send': typeof SendRoute
   '/settings': typeof SettingsRoute
   '/statements': typeof StatementsRoute
@@ -129,6 +145,8 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute
   '/more': typeof MoreRoute
   '/mpesa': typeof MpesaRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
   '/send': typeof SendRoute
   '/settings': typeof SettingsRoute
   '/statements': typeof StatementsRoute
@@ -146,6 +164,8 @@ export interface FileRouteTypes {
     | '/home'
     | '/more'
     | '/mpesa'
+    | '/notifications'
+    | '/profile'
     | '/send'
     | '/settings'
     | '/statements'
@@ -161,6 +181,8 @@ export interface FileRouteTypes {
     | '/home'
     | '/more'
     | '/mpesa'
+    | '/notifications'
+    | '/profile'
     | '/send'
     | '/settings'
     | '/statements'
@@ -176,6 +198,8 @@ export interface FileRouteTypes {
     | '/home'
     | '/more'
     | '/mpesa'
+    | '/notifications'
+    | '/profile'
     | '/send'
     | '/settings'
     | '/statements'
@@ -192,6 +216,8 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute
   MoreRoute: typeof MoreRoute
   MpesaRoute: typeof MpesaRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
   SendRoute: typeof SendRoute
   SettingsRoute: typeof SettingsRoute
   StatementsRoute: typeof StatementsRoute
@@ -257,6 +283,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MpesaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/send': {
       id: '/send'
       path: '/send'
@@ -304,6 +344,8 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   MoreRoute: MoreRoute,
   MpesaRoute: MpesaRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
   SendRoute: SendRoute,
   SettingsRoute: SettingsRoute,
   StatementsRoute: StatementsRoute,
